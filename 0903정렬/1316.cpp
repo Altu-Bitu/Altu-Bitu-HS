@@ -3,33 +3,36 @@
 #include <vector>
 using namespace std;
 
+bool solution(string word) {
+    vector<bool> arr; 
+    arr.assign(26, false);
+
+    for (int i = 0;i < word.length();i++) {
+
+        if (word[i] == word[i - 1]&&i>0)
+            continue;
+
+        if (arr[word[i] - 'a'])
+            return false;
+
+        arr[word[i] - 'a'] = true;
+
+        
+    }
+    return true;
+}
+
 int main() {
-    int n, cnt = 0;;
+    int n, cnt = 0;
     cin >> n;
-    vector<int> arr;
     string word;
 
-    for (int i = 0;i < n;i++) {
+    while (n--) {
         cin >> word;
-        arr.assign(26, -1); //알파벳 소문자 26개
-
-        for (int k = 0;k < word.length();k++) { 
-
-            if (arr[word[k] - 'a'] >= 0) {
-                cnt++;
-                break;
-            }
-
-            if (word[k] == word[k + 1]) {
-                continue;
-            }
-            else { //새로운 알파벳이 나오면 +1을 해준다
-                arr[word[k] - 'a'] += 1;
-            }
-        }
-
+        if (solution(word))
+            cnt++;
     }
 
-    cout << n - cnt << endl;
+    cout << cnt << endl;
 
 }
