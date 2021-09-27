@@ -22,6 +22,7 @@ int setMode(vector<int> v) {
 	vector<int> cnt;
 	cnt.assign(8001,0); // -4000 ~ 4000
 	int mode=0, max=0;
+
 	bool sec_num = false;
 
 	for (int i = 0;i < v.size();i++) {
